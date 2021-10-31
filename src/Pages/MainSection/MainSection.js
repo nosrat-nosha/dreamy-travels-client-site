@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Carousel, Col, Row } from "react-bootstrap";
+import { Card, Carousel, Col, Row, Spinner } from "react-bootstrap";
 import "./MainSection.css";
 import img1 from "../images/img1.jpg";
 import img2 from "../images/img2.jpg";
@@ -11,6 +11,7 @@ import adventurer from "../images/adventurer.png";
 import adventure from "../images/adventure.png";
 import seaside from "../images/seaside.png";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const MainSection = () => {
 	const [services, setServices] = useState([]);
@@ -20,53 +21,61 @@ const MainSection = () => {
 			.then((res) => res.json())
 			.then((data) => setServices(data));
 	}, []);
+	const { users, isLoading } = useAuth();
+	if (isLoading) {
+		return <Spinner animation="border" variant="warning" />;
+	}
 	return (
 		<div>
 			{/* =====================SECTION-1=====================*/}
-			<div className="container-fluid p-5">
-				<h1>Oue Travel Spot</h1>
-				<Row className="gx-5 gy-5 mt-5">
-					{services?.map((service) => (
-						<Col lg="6" sm="12" key={service.id} service={service}>
-							<Card className="shadow-lg">
-								<div className="img-container ">
-									<Card.Img
-										className="card-img"
-										variant="top"
-										src={service.img}
-									/>
-									<div className="middle">
+			{services.length === 0 ? (
+				<Spinner animation="border" variant="warning" />
+			) : (
+				<div className="container-fluid p-5">
+					<h1>Oue Travel Spot</h1>
+					<Row className="gx-5 gy-5 mt-5">
+						{services?.map((service) => (
+							<Col lg="6" sm="12" key={service.id} service={service}>
+								<Card className="shadow-lg">
+									<div className="img-container ">
+										<Card.Img
+											className="card-img"
+											variant="top"
+											src={service.img}
+										/>
+										<div className="middle">
+											<Link
+												className="btn btn-warning text"
+												to={`/booking/${service._id}`}
+											>
+												Book now
+											</Link>
+										</div>
+									</div>
+
+									<Card.Body>
+										<Card.Title className="text-warning">
+											{service.name}
+										</Card.Title>
+										<Card.Text>{service.description}</Card.Text>
+										<Card.Title className="text-muted">
+											Travel Time:{service.time}
+										</Card.Title>
+									</Card.Body>
+									<Card.Footer className="bg-warning">
 										<Link
-											className="btn btn-warning text"
+											className="fw-bold text-white"
 											to={`/booking/${service._id}`}
 										>
-											Book now
+											BooK Now
 										</Link>
-									</div>
-								</div>
-
-								<Card.Body>
-									<Card.Title className="text-warning">
-										{service.name}
-									</Card.Title>
-									<Card.Text>{service.description}</Card.Text>
-									<Card.Title className="text-muted">
-										Travel Time:{service.time}
-									</Card.Title>
-								</Card.Body>
-								<Card.Footer className="bg-warning">
-									<Link
-										className="fw-bold text-white"
-										to={`/booking/${service._id}`}
-									>
-										BooK Now
-									</Link>
-								</Card.Footer>
-							</Card>
-						</Col>
-					))}
-				</Row>
-			</div>
+									</Card.Footer>
+								</Card>
+							</Col>
+						))}
+					</Row>
+				</div>
+			)}
 
 			{/* =====================SECTION-2=====================*/}
 			<div className="container-fluid ">
@@ -188,6 +197,10 @@ const MainSection = () => {
 						</div>
 					</Col>
 				</Row>
+			</div>
+			{/* =====================SECTION-3=====================*/}
+			<div className="">
+				<h2 className="text-white">GALLERY SECTION</h2>
 			</div>
 		</div>
 	);
