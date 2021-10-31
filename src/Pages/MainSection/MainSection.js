@@ -24,11 +24,11 @@ const MainSection = () => {
 		<div>
 			{/* =====================SECTION-1=====================*/}
 			<div className="container-fluid p-5">
-				<h2>Oue Travel Spot</h2>
+				<h1>Oue Travel Spot</h1>
 				<Row className="gx-5 gy-5 mt-5">
 					{services?.map((service) => (
 						<Col lg="6" sm="12" key={service.id} service={service}>
-							<Card>
+							<Card className="shadow-lg">
 								<div className="img-container ">
 									<Card.Img
 										className="card-img"
@@ -44,14 +44,11 @@ const MainSection = () => {
 										</Link>
 									</div>
 								</div>
-								{/* <Card.Img
-									className="card-img"
-									variant="top"
-                                    src={service.img}
-                                    
-								/> */}
+
 								<Card.Body>
-									<Card.Title>{service.name}</Card.Title>
+									<Card.Title className="text-warning">
+										{service.name}
+									</Card.Title>
 									<Card.Text>{service.description}</Card.Text>
 									<Card.Title className="text-muted">
 										Travel Time:{service.time}
@@ -73,10 +70,13 @@ const MainSection = () => {
 
 			{/* =====================SECTION-2=====================*/}
 			<div className="container-fluid ">
+				<h1 className="p-5">Oue Travel Spot</h1>
 				<Row className="">
 					<Col lg="5 p-4">
 						<div className="">
-							<h1 className="title-text">A Simply Perfect Place To Get Lost</h1>
+							<h1 className="title-text text-warning">
+								A Simply Perfect Place To Get Lost
+							</h1>
 							<p className=" text-muted fs-4">
 								Treat yourself with a journey to your inner self. Visit a
 								mystique Tibet and start your spiritual adventure. We promise,

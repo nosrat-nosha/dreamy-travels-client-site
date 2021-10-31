@@ -30,7 +30,11 @@ const MenuBar = () => {
 								</Nav.Link>
 							)}
 							{users?.email ? (
-								<Nav.Link className="nav-li text-white " to="/moreevents">
+								<Nav.Link
+									as={Link}
+									className="nav-li text-white "
+									to="/moreevents"
+								>
 									More Events
 								</Nav.Link>
 							) : (
@@ -52,6 +56,7 @@ const MenuBar = () => {
 								</Nav.Link>
 							)}
 						</Nav>
+						<Navbar.Text>Log in as: {users.displayName}</Navbar.Text>
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>

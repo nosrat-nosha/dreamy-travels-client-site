@@ -65,13 +65,13 @@ const Services = () => {
 						<br />
 						<input
 							className="form-control"
-							placeholder="image"
+							placeholder="import image url"
 							required
-							type="file"
+							type="text"
 							{...register("img")}
 						/>
 						<br />
-						<input className="btn btn-warning text-white" type="submit" />
+						<input className="btn btn-warning text-white mt-5" type="submit" />
 					</form>
 				</Col>
 			</Row>

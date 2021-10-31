@@ -12,8 +12,8 @@ const Header = () => {
 					<p className="text-warning fs-6 ">
 						Life is a trip,travelling is living twice
 					</p>
-					<Link className="btn btn-warning" to="/booknow">
-						Book Now
+					<Link className="btn btn-warning" to="/">
+						Explore Now
 					</Link>
 				</div>
 			</>

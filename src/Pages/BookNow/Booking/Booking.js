@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Booking = () => {
@@ -14,13 +15,13 @@ const Booking = () => {
 	const [service, setService] = useState([]);
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/services/${serviceId}`)
+		fetch(`https://evil-village-67590.herokuapp.com/services/${serviceId}`)
 			.then((res) => res.json())
 			.then((data) => setService(data));
 	}, []);
 	// const selected = services.find((service) => service._id === serviceId);
 	const handelDelete = (id) => {
-		const url = `http://localhost:5000/services/${id}`;
+		const url = `https://evil-village-67590.herokuapp.com/services/${id}`;
 		fetch(url, {
 			method: "DELETE",
 		})
@@ -47,7 +48,7 @@ const Booking = () => {
 	};
 	return (
 		<div>
-			<h2>Booking : {serviceId}</h2>
+			<h2 className="p-5">Booking </h2>
 			<Row>
 				<Col lg={4} sm={8} className="mx-auto">
 					<Card>
@@ -85,6 +86,7 @@ const Booking = () => {
 							<Card.Text>Email Address :{users?.email}</Card.Text>
 							<form onSubmit={handleSubmit(onSubmit)}>
 								<input
+									className="form-control"
 									placeholder="Adress"
 									required
 									type="text"
@@ -92,6 +94,7 @@ const Booking = () => {
 								/>
 								<br />
 								<input
+									className="form-control"
 									placeholder="age"
 									required
 									type="text"
@@ -99,6 +102,7 @@ const Booking = () => {
 								/>
 								<br />
 								<textarea
+									className="form-control"
 									placeholder="description"
 									required
 									{...register("description")}
@@ -108,21 +112,10 @@ const Booking = () => {
 								<br />
 
 								<br />
-								<Button className="btn btn-warning" variant="primary">
+								<Link to="/home" className="btn btn-warning" variant="primary">
 									Book Now
-								</Button>
+								</Link>
 							</form>
-
-							<Button className="btn btn-warning" variant="primary">
-								Update
-							</Button>
-							<Button
-								onClick={() => handelDelete(service._id)}
-								className="btn btn-warning ms-2"
-								variant="primary"
-							>
-								Delete
-							</Button>
 						</Card.Body>
 					</Card>
 				</Col>
