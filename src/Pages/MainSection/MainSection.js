@@ -199,8 +199,23 @@ const MainSection = () => {
 				</Row>
 			</div>
 			{/* =====================SECTION-3=====================*/}
-			<div className="">
-				<h2 className="text-white">GALLERY SECTION</h2>
+			<div className="container">
+				<Row className="gx-5 gy-5 p-5 mt-5">
+					<h2 className="mt-5 p-5">GALLERY SECTION</h2>
+					{services?.map((service) => (
+						<Col className="" lg="3" sm="12" key={service.id} service={service}>
+							<Card className="shadow">
+								<div className="img-container ">
+									<Card.Img
+										className="card-img gallery-img"
+										variant="top"
+										src={service.img}
+									/>
+								</div>
+							</Card>
+						</Col>
+					))}
+				</Row>
 			</div>
 		</div>
 	);
