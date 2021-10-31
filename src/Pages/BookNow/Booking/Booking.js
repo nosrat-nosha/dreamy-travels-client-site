@@ -37,7 +37,7 @@ const Booking = () => {
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = (data) => {
 		console.log(data);
-		axios.post("http://localhost:5000", data).then((res) => {
+		axios.post("https://evil-village-67590.herokuapp.com", data).then((res) => {
 			if (res.data.insertedId) {
 				alert("Successfully Added");
 				reset();

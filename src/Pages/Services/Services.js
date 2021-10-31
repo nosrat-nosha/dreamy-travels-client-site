@@ -6,13 +6,15 @@ const Services = () => {
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = (data) => {
 		console.log(data);
-		axios.post("http://localhost:5000/services", data).then((res) => {
-			if (res.data.insertedId) {
-				alert("Successfully Added");
-				reset();
-			}
-			console.log(res);
-		});
+		axios
+			.post("https://evil-village-67590.herokuapp.com/services", data)
+			.then((res) => {
+				if (res.data.insertedId) {
+					alert("Successfully Added");
+					reset();
+				}
+				console.log(res);
+			});
 	};
 
 	return (
