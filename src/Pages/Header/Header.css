@@ -1,0 +1,14 @@
+.header-container {
+	background-image: url(../images/img2.jpg);
+	height: 600px;
+	background-position: center;
+	position: relative;
+	opacity: 0.8;
+}
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 3rem;
+}
